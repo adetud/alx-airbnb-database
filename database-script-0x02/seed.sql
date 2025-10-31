@@ -1,28 +1,37 @@
--- Add Users
-INSERT INTO users (first_name, last_name, email, password, phone)
-VALUES
-('Ada', 'Obi', 'ada@example.com', 'hashedpwd1', '08011112222'),
-('Bayo', 'Okafor', 'bayo@example.com', 'hashedpwd2', '08033334444'),
-('Chi', 'Eze', 'chi@example.com', 'hashedpwd3', '08055556666');
+-- seed.sql
+-- Sample Data for Airbnb Database
 
--- Add Properties
-INSERT INTO properties (owner_id, title, description, price_per_night, city, state, country)
+-- Insert sample users
+INSERT INTO users (full_name, email, password)
 VALUES
-(1, 'Cozy Room in Lekki', 'Nice space near beach', 45.00, 'Lagos', 'Lagos', 'Nigeria'),
-(2, '3BR Apartment', 'Spacious home for family', 120.00, 'Abuja', 'FCT', 'Nigeria');
+('Daniel Adetu', 'daniel@example.com', 'hashed_password_123'),
+('Mary Johnson', 'mary@example.com', 'hashed_password_456'),
+('Ahmed Musa', 'ahmed@example.com', 'hashed_password_789');
 
--- Add Bookings
-INSERT INTO bookings (guest_id, property_id, start_date, end_date, status)
+-- Insert sample properties
+INSERT INTO properties (user_id, title, description, price_per_night, location)
 VALUES
-(3, 1, '2025-11-01', '2025-11-05', 'confirmed'),
-(1, 2, '2025-12-10', '2025-12-15', 'pending');
+(1, 'Cozy Apartment in Lagos', '2-bedroom apartment near the beach', 70.00, 'Lagos, Nigeria'),
+(2, 'Luxury Villa in Abuja', 'Spacious villa with pool and garden', 250.00, 'Abuja, Nigeria'),
+(3, 'Modern Studio in Nairobi', 'Compact studio perfect for one', 50.00, 'Nairobi, Kenya');
 
--- Add Payments
-INSERT INTO payments (booking_id, amount, method, status)
+-- Insert sample bookings
+INSERT INTO bookings (user_id, property_id, start_date, end_date, status)
 VALUES
-(1, 180.00, 'card', 'paid');
+(2, 1, '2025-11-05', '2025-11-10', 'confirmed'),
+(3, 2, '2025-12-01', '2025-12-07', 'pending'),
+(1, 3, '2025-12-15', '2025-12-18', 'cancelled');
 
--- Add Reviews
-INSERT INTO reviews (reviewer_id, property_id, rating, comment)
+-- Insert sample payments
+INSERT INTO payments (booking_id, amount, payment_method, payment_status)
 VALUES
-(3, 1, 5, 'Perfect stay! Loved it.');
+(1, 350.00, 'Credit Card', 'completed'),
+(2, 1750.00, 'PayPal', 'pending'),
+(3, 150.00, 'Debit Card', 'refunded');
+
+-- Insert sample reviews
+INSERT INTO reviews (user_id, property_id, rating, comment)
+VALUES
+(2, 1, 5, 'Amazing place! Very comfortable and close to everything.'),
+(3, 2, 4, 'Great villa, but the WiFi could be faster.'),
+(1, 3, 5, 'Perfect for solo travelers, very clean and modern.');
