@@ -14,6 +14,14 @@ CREATE INDEX idx_bookings_property_id ON bookings(property_id);
 -- 4. For faster searches by property location
 CREATE INDEX idx_properties_city ON properties(city);
 
--- Measure query performance before and after using EXPLAIN
--- Example:
--- EXPLAIN SELECT * FROM bookings WHERE user_id = 5;
+-- ===============================
+-- Measure query performance BEFORE and AFTER adding indexes
+-- ===============================
+
+-- Before adding indexes (run this first, without indexes)
+-- EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 5;
+
+-- After adding indexes (run this again)
+EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 5;
+
+-- Compare the query execution times and note the improvement.
