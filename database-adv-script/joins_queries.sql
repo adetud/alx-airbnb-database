@@ -42,4 +42,5 @@ SELECT p.id AS property_id,
        r.rating AS review_rating
 FROM properties p
 LEFT JOIN reviews r
-ON p.id = r.property_id;
+ON p.id = r.property_id
+ORDER BY p.id;
